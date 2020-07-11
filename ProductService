@@ -1,0 +1,30 @@
+package Service;
+
+import java.util.HashMap;
+
+import Beans.CartItem;
+import Beans.Product;
+
+public class ProductService {
+
+    private HashMap<String,CartItem> cartItems=new HashMap<String,CartItem>();
+
+    public ProductService() //构造函数
+    {
+        CartItem cartltem1=new CartItem();
+        CartItem cartltem2=new CartItem();
+        Product product1=new Product("001","Mobilephone",1000);
+        Product product2=new Product("002","Watch",100);
+        cartltem1.setProduct(product1);
+        cartltem2.setProduct(product2);
+        cartItems.put("001",cartltem1);
+        cartItems.put("002", cartltem2);
+    }
+
+    public Product findProductbypid(String pid)
+    {
+        CartItem cartItem=cartItems.get(pid);
+        Product product=cartItem.getProduct();
+        return product;
+    }
+}
